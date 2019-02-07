@@ -1,3 +1,8 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
+
 package insure.onoff.common.connection
 
 import android.content.BroadcastReceiver
@@ -6,6 +11,13 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import insure.onoff.core.OnOffApplication
 
+/**
+ * ConnectivityReceiver Class.
+ *
+ * This class is responsible to manage internet connection
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
+ */
 
 class ConnectivityReceiver : BroadcastReceiver() {
 

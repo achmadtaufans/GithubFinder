@@ -1,3 +1,7 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
 package insure.onoff.core.calling_api
 
 import insure.onoff.utilities.BASE_URL
@@ -8,7 +12,11 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * Created by andika on 1/27/19.
+ * Retrofit Manager
+ *
+ * This class is responsible to manage Retrofit and create Retrofit service. This class only needs 1 object
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
 object RetrofitManager {
     private val mRetrofit: Retrofit

@@ -1,3 +1,7 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
 package insure.onoff.data.repository.sample
 
 import android.util.Log
@@ -9,6 +13,16 @@ import insure.onoff.data.models.sample.Request
 import insure.onoff.data.models.sample.Response
 import retrofit2.Call
 import retrofit2.Callback
+
+/**
+ * SampleRepository
+ *
+ * This class is responsible to sample repository
+ *
+ * Note : This class is temporary to understand Jetpack architecture as simple as possible
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
+ */
 
 class SampleRepository() {
 

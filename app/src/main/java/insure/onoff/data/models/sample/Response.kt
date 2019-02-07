@@ -1,7 +1,21 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
 package insure.onoff.data.models.sample
 
 import android.os.Parcel
 import android.os.Parcelable
+
+/**
+ * Response
+ *
+ * This class is responsible to be response model
+ *
+ * Note : This class is temporary to understand Jetpack architecture as simple as possible
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
+ */
 
 data class Response(val name: String?, val job: String?, val id: Int?, val createdAt: String?) : Parcelable {
 

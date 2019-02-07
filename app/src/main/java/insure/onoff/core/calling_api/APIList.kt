@@ -1,3 +1,7 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
 package insure.onoff.core.calling_api
 
 import insure.onoff.data.models.sample.Request
@@ -7,8 +11,13 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 /**
- * Created by andika on 1/27/19.
+ * APIList Interface.
+ *
+ * This interface is used as API container
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
+
 interface APIList {
     //Temporary
     @POST("api/users")

@@ -1,3 +1,7 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
 package insure.onoff.core.calling_api
 
 import okhttp3.Interceptor
@@ -6,7 +10,11 @@ import java.io.IOException
 import java.util.HashMap
 
 /**
- * Created by andika on 1/27/19.
+ * APIList Interface.
+ *
+ * This class function is creating custom headers when calling endpoint
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
 class CustomHttpInterceptors : Interceptor {
 

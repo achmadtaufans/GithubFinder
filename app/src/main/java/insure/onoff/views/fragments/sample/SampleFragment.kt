@@ -1,3 +1,7 @@
+/**
+ * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ *            Any dissemination outside of Onoff Insurance is strictly prohibited.
+ */
 package insure.onoff.views.fragments.sample
 
 import android.os.Bundle
@@ -12,6 +16,16 @@ import insure.onoff.data.models.sample.Request
 import insure.onoff.databinding.FragmentSampleBinding
 import insure.onoff.utilities.InjectorUtils
 import insure.onoff.viewmodels.sample.SampleViewModel
+
+/**
+ * SampleFragment
+ *
+ * This class is responsible to display Fragment
+ *
+ * Note : This class is temporary to understand Jetpack architecture as simple as possible
+ *
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
+ */
 
 class SampleFragment : Fragment() {
     private lateinit var viewModel: SampleViewModel
