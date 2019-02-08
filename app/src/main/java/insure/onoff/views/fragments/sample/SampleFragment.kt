@@ -31,6 +31,7 @@ class SampleFragment : Fragment() {
     private lateinit var viewModel: SampleViewModel
     private lateinit var binding: FragmentSampleBinding
 
+    //To display fragment and configurate needed variables
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSampleBinding.inflate(inflater, container, false)
         val context = context ?: return binding.root
@@ -41,6 +42,7 @@ class SampleFragment : Fragment() {
         return binding.root;
     }
 
+    //To call sample API by calling view model
     private fun displayAccountDetail() {
         val request: Request = Request("morpheus", "leader")
         viewModel.register(request).observe(viewLifecycleOwner, Observer { responseData ->

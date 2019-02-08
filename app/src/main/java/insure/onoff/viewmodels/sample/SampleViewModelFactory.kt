@@ -19,6 +19,7 @@ import insure.onoff.data.repository.sample.SampleRepository
  */
 class SampleViewModelFactory(private val repository : SampleRepository) : ViewModelProvider.NewInstanceFactory() {
 
+    //To generate Sample ViewModel
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>) = SampleViewModel(repository) as T
 

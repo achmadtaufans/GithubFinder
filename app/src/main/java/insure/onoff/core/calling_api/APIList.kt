@@ -19,7 +19,8 @@ import retrofit2.http.POST
  */
 
 interface APIList {
-    //Temporary
+
+    //Temporary - To call some API
     @POST("api/users")
     fun displaySomeResponse(@Body request: Request): Call<Response>
 

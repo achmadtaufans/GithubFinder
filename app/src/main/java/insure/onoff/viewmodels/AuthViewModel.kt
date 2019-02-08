@@ -22,6 +22,7 @@ class AuthViewModel constructor(private val repository: AuthRepository) : ViewMo
 
     private val authResponse = MediatorLiveData<AuthResponse>();
 
+    //To call register API on repository and getting Live Data
     fun register(registerRequest: RegisterRequest) : MediatorLiveData<AuthResponse> {
 
         return authResponse;

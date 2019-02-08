@@ -21,19 +21,22 @@ import insure.onoff.core.OnOffApplication
 
 class ConnectivityReceiver : BroadcastReceiver() {
 
+    //
     override fun onReceive(context: Context, arg1: Intent) {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = cm.activeNetworkInfo
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetworkInfo
         val isConnected = activeNetwork != null && activeNetwork.isConnected
         if (connectivityReceiverListener != null) {
             connectivityReceiverListener!!.onNetworkConnectionChanged(isConnected)
         }
     }
 
+    //To provide network connection events
     interface ConnectivityReceiverListener {
         fun onNetworkConnectionChanged(isConnected: Boolean)
     }
 
+    //To provide checking internet connection in single variable
     companion object {
         var connectivityReceiverListener: ConnectivityReceiverListener? = null
 

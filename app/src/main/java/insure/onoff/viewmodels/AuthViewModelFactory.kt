@@ -21,6 +21,7 @@ import insure.onoff.viewmodels.sample.SampleViewModel
  */
 class AuthViewModelFactory(private val repository : AuthRepository) : ViewModelProvider.NewInstanceFactory() {
 
+    //To generate AuthViewModel
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>) = AuthViewModel(repository) as T
 

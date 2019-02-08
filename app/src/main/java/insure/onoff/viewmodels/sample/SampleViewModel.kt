@@ -24,6 +24,7 @@ class SampleViewModel constructor(private val repository: SampleRepository) : Vi
 
     private val response = MediatorLiveData<Response>();
 
+    //To call register API (sample) on repository and get Live Data
     fun register(registerRequest: Request) : MediatorLiveData<Response> {
         val liveRegisterResponse = repository.register(registerRequest);
         response.addSource(liveRegisterResponse, response::setValue)

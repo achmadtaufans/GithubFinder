@@ -18,6 +18,7 @@ import insure.onoff.R
 
 class MainActivity : AppCompatActivity() {
 
+    //To display Main Activity layout and initialize needed variables
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -20,6 +20,7 @@ class CustomHttpInterceptors : Interceptor {
 
     protected var headers: MutableMap<String, String> = HashMap()
 
+    //To create chain after calling CustomHttpInterceptors constructor
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()
@@ -31,6 +32,7 @@ class CustomHttpInterceptors : Interceptor {
         return chain.proceed(request)
     }
 
+    //Builder to make all added headers in one line code
     class Builder {
         internal var customHttpInterceptors: CustomHttpInterceptors
 
@@ -38,7 +40,7 @@ class CustomHttpInterceptors : Interceptor {
             customHttpInterceptors = CustomHttpInterceptors()
         }
 
-        //Every value should be string
+        //To add some header. Every value should be string
         fun addHeaderParams(key: String, value: String): Builder {
             customHttpInterceptors.headers[key] = value
             return this

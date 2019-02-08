@@ -21,9 +21,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitManager {
     private val mRetrofit: Retrofit
 
+    //To provide Retrofit service
     val service: APIList
         get() = mRetrofit.create(APIList::class.java)
 
+    //Initialize needed properties like headers, base url, etc...
     init {
         val httpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             .setLevel(HttpLoggingInterceptor.Level.HEADERS)

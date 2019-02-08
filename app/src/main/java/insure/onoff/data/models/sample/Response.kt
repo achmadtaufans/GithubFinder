@@ -19,6 +19,7 @@ import android.os.Parcelable
 
 data class Response(val name: String?, val job: String?, val id: Int?, val createdAt: String?) : Parcelable {
 
+    //Create model with Parcel.
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -27,6 +28,7 @@ data class Response(val name: String?, val job: String?, val id: Int?, val creat
     ) {
     }
 
+    //To write to parcel. This is from Parcelable interface
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(job)
@@ -34,15 +36,20 @@ data class Response(val name: String?, val job: String?, val id: Int?, val creat
         parcel.writeString(createdAt)
     }
 
+    //To describe bit. This is from Parcelable interface
     override fun describeContents(): Int {
         return 0
     }
 
+    //To create from Parcel. This is from Parcelable interface
     companion object CREATOR : Parcelable.Creator<Response> {
+
+        //To create from Parcel
         override fun createFromParcel(parcel: Parcel): Response {
             return Response(parcel)
         }
 
+        //Add new array
         override fun newArray(size: Int): Array<Response?> {
             return arrayOfNulls(size)
         }

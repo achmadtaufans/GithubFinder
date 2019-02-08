@@ -18,15 +18,18 @@ class OnOffApplication : Application() {
 
     private lateinit var context: Context
 
+    //To initialize needed variable in whole activities
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
     }
 
+    //To get context from single object
     companion object {
         fun getContext() : Context = this.getContext()
     }
 
+    //To get context
     fun getContext(): Context {
         return context
     }
