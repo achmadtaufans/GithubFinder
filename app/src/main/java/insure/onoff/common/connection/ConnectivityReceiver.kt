@@ -44,10 +44,7 @@ class ConnectivityReceiver : BroadcastReceiver() {
             get() {
                 val cm = OnOffApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 val activeNetwork = cm.activeNetworkInfo
-                val isItConnected = activeNetwork != null && activeNetwork.isConnected
-                if (!isItConnected) {
-                }
-                return isItConnected
+                return activeNetwork != null && activeNetwork.isConnected
             }
     }
 
