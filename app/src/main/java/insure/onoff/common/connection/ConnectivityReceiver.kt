@@ -21,7 +21,7 @@ import insure.onoff.core.OnOffApplication
 
 class ConnectivityReceiver : BroadcastReceiver() {
 
-    //
+    //To check internet connection automatically. This method detects Receiver tag in Manifest
     override fun onReceive(context: Context, arg1: Intent) {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetworkInfo
