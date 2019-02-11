@@ -1,5 +1,5 @@
 /**
- * @copyright ©2018 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
+ * @copyright ©2019 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
  *            Any dissemination outside of Onoff Insurance is strictly prohibited.
  */
 package insure.onoff.core
@@ -10,7 +10,7 @@ import android.content.Context
 /**
  * OnOffApplication
  *
- * This class is responsible to manage Android Application. Android Application is called first time before activity called. 
+ * This class is responsible to manage Android Application. Android Application is called first time before activity called.
  * Application can contain Application Context provider, Dagger app component provider.
  * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
