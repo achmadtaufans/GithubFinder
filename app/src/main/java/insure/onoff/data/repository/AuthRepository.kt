@@ -6,8 +6,13 @@ package insure.onoff.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import insure.onoff.core.calling_api.APIList
+import insure.onoff.core.calling_api.RetrofitManager
 import insure.onoff.data.models.account.AuthResponse
-import insure.onoff.data.models.account.RegisterRequest
+import insure.onoff.data.models.account.AuthRequest
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * AuthRepository
@@ -19,20 +24,68 @@ import insure.onoff.data.models.account.RegisterRequest
 
 class AuthRepository() {
 
-//    val apiList : APIList = RetrofitManager.getInstance().service;
+    val apiList : APIList = RetrofitManager.service;
 
-    fun register(registerRequest: RegisterRequest) : LiveData<AuthResponse> {
+    fun register(authRequest: AuthRequest) : LiveData<AuthResponse> {
         val authResponse : MutableLiveData<AuthResponse> = MutableLiveData();
 
-//        apiList.register(registerRequest).enqueue(object : Callback<AuthResponse> {
-//            override fun onResponse(call: Call<DisplayMovieResponse>, response: Response<DisplayMovieResponse>) {
-//                movieList.value = response.body()?.results;
-//            }
-//
-//            override fun onFailure(call: Call<DisplayMovieResponse>, t: Throwable) {
-//
-//            }
-//        })
+        apiList.register(authRequest).enqueue(object : Callback<AuthResponse> {
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                authResponse.value = response.body();
+            }
+
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+
+            }
+        })
+
+        return authResponse;
+    }
+
+    fun resendConfirmation(authRequest: AuthRequest) : LiveData<AuthResponse> {
+        val authResponse : MutableLiveData<AuthResponse> = MutableLiveData();
+
+        apiList.resendConfirmation(authRequest).enqueue(object : Callback<AuthResponse> {
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                authResponse.value = response.body();
+            }
+
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+
+            }
+        })
+
+        return authResponse;
+    }
+
+    fun confirmOTP(authRequest: AuthRequest) : LiveData<AuthResponse> {
+        val authResponse : MutableLiveData<AuthResponse> = MutableLiveData();
+
+        apiList.confirmOTP(authRequest).enqueue(object : Callback<AuthResponse> {
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                authResponse.value = response.body();
+            }
+
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+
+            }
+        })
+
+        return authResponse;
+    }
+
+    fun login(authRequest: AuthRequest) : LiveData<AuthResponse> {
+        val authResponse : MutableLiveData<AuthResponse> = MutableLiveData();
+
+        apiList.login(authRequest).enqueue(object : Callback<AuthResponse> {
+            override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                authResponse.value = response.body();
+            }
+
+            override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+
+            }
+        })
 
         return authResponse;
     }

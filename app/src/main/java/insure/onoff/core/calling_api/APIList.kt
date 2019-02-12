@@ -4,6 +4,8 @@
  */
 package insure.onoff.core.calling_api
 
+import insure.onoff.data.models.account.AuthRequest
+import insure.onoff.data.models.account.AuthResponse
 import insure.onoff.data.models.sample.Request
 import insure.onoff.data.models.sample.Response
 import retrofit2.Call
@@ -23,5 +25,17 @@ interface APIList {
     //Temporary - To call some API
     @POST("api/users")
     fun displaySomeResponse(@Body request: Request): Call<Response>
+
+    @POST("v/1/register")
+    fun register(@Body authRequest: AuthRequest): Call<AuthResponse>
+
+    @POST("v/1/register/resend-confirmation")
+    fun resendConfirmation(@Body authRequest: AuthRequest): Call<AuthResponse>
+
+    @POST("v/1/register/confirm")
+    fun confirmOTP(@Body authRequest: AuthRequest): Call<AuthResponse>
+
+    @POST("v/1/login")
+    fun login(@Body authRequest: AuthRequest): Call<AuthResponse>
 
 }
