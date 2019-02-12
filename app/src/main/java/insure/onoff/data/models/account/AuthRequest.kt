@@ -16,9 +16,17 @@ import android.os.Parcelable
  */
 
 data class AuthRequest(val Username: String?, val Password: String?, val UserType: String?, val MFA: Boolean?,
-                       val VerificationCode: String?, val Provider: String?, val DeviceId: String?) : Parcelable {
+                       val VerificationCode: String?, var Provider: String?, var DeviceId: String?) : Parcelable {
 
     constructor(username: String, userType: String) : this(username, null, userType, null, null, null, null );
+    constructor(username: String, password: String, userType: String, source: String, code: Int) :  this(username, password, userType, null, null, null, null) {
+        when(code) {
+            1 -> DeviceId = source;
+            2 -> Provider = source;
+        }
+    }
+    constructor(username: String, password: String, userType: String, _MFA: Boolean) : this(username, password, userType, _MFA, null, null, null)
+    constructor(username: String, verificationCode: String, userType: String) : this(username, null, userType, null, verificationCode, null, null );
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
