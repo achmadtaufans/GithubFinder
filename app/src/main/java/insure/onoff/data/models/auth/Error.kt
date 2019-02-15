@@ -24,7 +24,8 @@ data class Error(val code: String, val name: String, val message: String) : Parc
         parcel.writeString(message)
     }
 
-    //To describe bit. This is from Parcelable interface
+    //A bitmask indicating the set of special object types marshaled by this Parcelable object instance.
+    //Value is either 0 or CONTENTS_FILE_DESCRIPTOR. This is from Parcelable interface
     override fun describeContents(): Int {
         return 0
     }
@@ -40,5 +41,4 @@ data class Error(val code: String, val name: String, val message: String) : Parc
             return arrayOfNulls(size)
         }
     }
-
 }

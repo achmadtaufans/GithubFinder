@@ -36,7 +36,8 @@ data class Response(val name: String?, val job: String?, val id: Int?, val creat
         parcel.writeString(createdAt)
     }
 
-    //To describe bit. This is from Parcelable interface
+    //A bitmask indicating the set of special object types marshaled by this Parcelable object instance.
+    //Value is either 0 or CONTENTS_FILE_DESCRIPTOR. This is from Parcelable interface
     override fun describeContents(): Int {
         return 0
     }
@@ -54,5 +55,4 @@ data class Response(val name: String?, val job: String?, val id: Int?, val creat
             return arrayOfNulls(size)
         }
     }
-
 }

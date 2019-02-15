@@ -34,7 +34,8 @@ data class AuthResponse(val status: Boolean, val message: String, val data: List
         parcel.writeTypedList(error)
     }
 
-    //To describe bit. This is from Parcelable interface
+    //A bitmask indicating the set of special object types marshaled by this Parcelable object instance.
+    //Value is either 0 or CONTENTS_FILE_DESCRIPTOR. This is from Parcelable interface
     override fun describeContents(): Int {
         return 0
     }
@@ -51,5 +52,4 @@ data class AuthResponse(val status: Boolean, val message: String, val data: List
             return arrayOfNulls(size)
         }
     }
-
 }

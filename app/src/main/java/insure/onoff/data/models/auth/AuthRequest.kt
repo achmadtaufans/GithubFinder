@@ -54,7 +54,8 @@ data class AuthRequest(val Username: String?, val Password: String?, val UserTyp
         parcel.writeString(DeviceId)
     }
 
-    //To describe bit. This is from Parcelable interface
+    //A bitmask indicating the set of special object types marshaled by this Parcelable object instance.
+    //Value is either 0 or CONTENTS_FILE_DESCRIPTOR. This is from Parcelable interface
     override fun describeContents(): Int {
         return 0
     }
@@ -70,6 +71,4 @@ data class AuthRequest(val Username: String?, val Password: String?, val UserTyp
             return arrayOfNulls(size)
         }
     }
-
-
 }
