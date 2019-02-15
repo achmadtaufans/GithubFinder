@@ -27,23 +27,24 @@ import retrofit2.Callback
 
 class SampleRepository() {
 
-    val apiList : APIList = RetrofitManager.service;
+    val apiList: APIList = RetrofitManager.service
 
-    fun register(request: Request) : LiveData<Response> {
-        val authResponse : MutableLiveData<Response> = MutableLiveData();
+    fun register(request: Request): LiveData<Response> {
+        val authResponse: MutableLiveData<Response> = MutableLiveData()
 
-        if(ConnectivityReceiver.isConnected) {
-            apiList.displaySomeResponse(request).enqueue(object : Callback<Response> {
-                override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-                    authResponse.value = response.body();
-                }
+        TODO("Resolve Connection test problem - 6Q1YdXKs")
+        //if(ConnectivityReceiver.isConnected) {
+        apiList.displaySomeResponse(request).enqueue(object : Callback<Response> {
+            override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
+                authResponse.value = response.body()
+            }
 
-                override fun onFailure(call: Call<Response>, t: Throwable) {
-                    Log.e("TAG", "onFailure");
-                }
-            })
-        }
+            override fun onFailure(call: Call<Response>, t: Throwable) {
+                Log.e("TAG", "onFailure")
+            }
+        })
+        //}
 
-        return authResponse;
+        return authResponse
     }
 }
