@@ -40,9 +40,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Initialize the Handler
-        mDelayHandler = Handler()
         // Navigate with delay
+        mDelayHandler = Handler()
         mDelayHandler!!.postDelayed(mRunnable, ANIMATION_DURATION)
     }
 
@@ -53,6 +52,7 @@ class SplashActivity : AppCompatActivity() {
         if (mDelayHandler != null) {
             mDelayHandler!!.removeCallbacks(mRunnable)
         }
+
         super.onDestroy()
     }
 }
