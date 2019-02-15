@@ -9,6 +9,7 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import insure.onoff.R
@@ -24,40 +25,33 @@ import kotlinx.android.synthetic.main.activity_splash.*
  */
 
 class SplashActivity : AppCompatActivity() {
+    private var mDelayHandler: Handler? = null
+
+    internal val mRunnable: Runnable = Runnable {
+        if (!isFinishing) {
+
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        startAnimation()
+        mDelayHandler = Handler()
+
+        mDelayHandler!!.postDelayed(mRunnable, ANIMATION_DURATION)
     }
 
-    private fun startAnimation() {
+    public override fun onDestroy() {
 
-        val valueAnimator = ValueAnimator.ofFloat(0f, 1f)
-        valueAnimator.addUpdateListener {
-            val value = it.animatedValue as Float
-            imageViewLogoTextSplash.scaleX = value
-            imageViewLogoTextSplash.scaleY = value
+        if (mDelayHandler != null) {
+            mDelayHandler!!.removeCallbacks(mRunnable)
         }
-        valueAnimator.interpolator = BounceInterpolator()
-        valueAnimator.duration = ANIMATION_DURATION
 
-        val intent = Intent(this, MainActivity::class.java)
-        valueAnimator.addListener(object : Animator.AnimatorListener {
-            override fun onAnimationRepeat(p0: Animator?) {}
-
-            override fun onAnimationEnd(p0: Animator?) {
-                // Navigate to main activity on navigation end.
-                startActivity(intent)
-                finish()
-            }
-
-            override fun onAnimationCancel(p0: Animator?) {}
-
-            override fun onAnimationStart(p0: Animator?) {}
-        })
-
-        valueAnimator.start()
+        super.onDestroy()
     }
+
 }
