@@ -38,5 +38,4 @@ interface APIList {
 
     @POST("v/1/login")
     fun login(@Body authRequest: AuthRequest): Call<AuthResponse>
-
 }

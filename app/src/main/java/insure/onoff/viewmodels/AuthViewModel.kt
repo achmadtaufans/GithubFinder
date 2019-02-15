@@ -67,5 +67,4 @@ class AuthViewModel constructor(private val repository: AuthRepository) : ViewMo
         authResponse.addSource(liveData, authResponse::setValue)
         return authResponse;
     }
-
 }

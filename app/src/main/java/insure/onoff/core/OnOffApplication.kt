@@ -32,5 +32,4 @@ class OnOffApplication : Application() {
     fun getContext(): Context {
         return context
     }
-
 }

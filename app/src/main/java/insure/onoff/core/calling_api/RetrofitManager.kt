@@ -40,5 +40,4 @@ object RetrofitManager {
             .baseUrl(BASE_URL)
             .build()
     }
-
 }

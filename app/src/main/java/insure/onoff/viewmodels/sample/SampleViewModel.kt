@@ -30,5 +30,4 @@ class SampleViewModel constructor(private val repository: SampleRepository) : Vi
         response.addSource(liveRegisterResponse, response::setValue)
         return response;
     }
-
 }

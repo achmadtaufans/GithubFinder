@@ -47,5 +47,4 @@ class ConnectivityReceiver : BroadcastReceiver() {
                 return activeNetwork != null && activeNetwork.isConnected
             }
     }
-
 }
