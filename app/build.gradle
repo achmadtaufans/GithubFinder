@@ -23,12 +23,6 @@ android {
     dataBinding {
         enabled = true
     }
-    applicationVariants.all{
-        variant ->
-            variant.outputs.all {
-                outputFileName = "./" + outputFileName
-            }
-    }
 }
 
 dependencies {
