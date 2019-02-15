@@ -7,10 +7,6 @@ before_script:
 - export GRADLE_USER_HOME=$(pwd)/.gradle
 - chmod +x ./gradlew
 
-cache:
-  key: 12
-  paths:
-  - .gradle/
 
 build:
   stage: build
