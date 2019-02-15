@@ -8,7 +8,7 @@ before_script:
 - chmod +x ./gradlew
 
 cache:
-  key: ${CI_PROJECT_ID}
+  key: 12
   paths:
   - .gradle/
 
