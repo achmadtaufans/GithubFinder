@@ -32,7 +32,7 @@ class SampleRepository() {
     fun register(request: Request) : LiveData<Response> {
         val authResponse : MutableLiveData<Response> = MutableLiveData();
 
-        if(ConnectivityReceiver.isConnected) {
+        //if(ConnectivityReceiver.isConnected) {
             apiList.displaySomeResponse(request).enqueue(object : Callback<Response> {
                 override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
                     authResponse.value = response.body();
@@ -42,7 +42,7 @@ class SampleRepository() {
                     Log.e("TAG", "onFailure");
                 }
             })
-        }
+        //}
 
         return authResponse;
     }
