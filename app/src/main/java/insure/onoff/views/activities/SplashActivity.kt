@@ -5,16 +5,12 @@
 
 package insure.onoff.views.activities
 
-import android.animation.Animator
-import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import insure.onoff.R
 import insure.onoff.utilities.ANIMATION_DURATION
-import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
  * SplashActivity
@@ -24,33 +20,39 @@ import kotlinx.android.synthetic.main.activity_splash.*
  * @author    Charles S  <charlessetiadi@onoff.insure>
  */
 class SplashActivity : AppCompatActivity() {
+    // Initialize Handler to run runnable at some time
     private var mDelayHandler: Handler? = null
 
+    // Initialize Passing to MainActivity
     internal val mRunnable: Runnable = Runnable {
+        // Delay process finish by handler
         if (!isFinishing) {
-
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
     }
 
+    /**
+     * Create view activity
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Initialize the Handler
         mDelayHandler = Handler()
-
+        // Navigate with delay
         mDelayHandler!!.postDelayed(mRunnable, ANIMATION_DURATION)
     }
 
+    /**
+     * Remove Activity State
+     */
     public override fun onDestroy() {
-
         if (mDelayHandler != null) {
             mDelayHandler!!.removeCallbacks(mRunnable)
         }
-
         super.onDestroy()
     }
-
 }
