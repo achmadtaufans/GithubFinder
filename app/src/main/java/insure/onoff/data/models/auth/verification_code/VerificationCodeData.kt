@@ -2,34 +2,24 @@
  * @copyright ©2019 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
  *            Any dissemination outside of Onoff Insurance is strictly prohibited.
  */
-package insure.onoff.data.models.sample
+package insure.onoff.data.models.auth.verification_code
 
 import android.os.Parcel
 import android.os.Parcelable
-
 /**
- * Request
+ * VerificationCodeData
  *
- * This class is responsible to be request model
- *
- * Note : This class is temporary to understand Jetpack architecture as simple as possible
+ * This class is responsible to contain CodeDeliveryDetails data
  *
  * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
-
-data class Request(val name: String?, val job: String?) : Parcelable {
-
+data class VerificationCodeData(val CodeDeliveryDetails : CodeDeliveryDetailsData?) : Parcelable {
     //Create model with Parcel.
-    constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString()
-    ) {
-    }
+    constructor(parcel: Parcel) : this(parcel.readParcelable<CodeDeliveryDetailsData>(CodeDeliveryDetailsData::class.java.classLoader)) { }
 
     //To write to parcel. This is from Parcelable interface
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
-        parcel.writeString(job)
+        parcel.writeParcelable(CodeDeliveryDetails, flags)
     }
 
     //A bitmask indicating the set of special object types marshaled by this Parcelable object instance.
@@ -39,14 +29,14 @@ data class Request(val name: String?, val job: String?) : Parcelable {
     }
 
     //To create parcelable object. This is from Parcelable interface
-    companion object CREATOR : Parcelable.Creator<Request> {
+    companion object CREATOR : Parcelable.Creator<VerificationCodeData> {
         //To create from Parcel
-        override fun createFromParcel(parcel: Parcel): Request {
-            return Request(parcel)
+        override fun createFromParcel(parcel: Parcel): VerificationCodeData {
+            return VerificationCodeData(parcel)
         }
 
         //Add new array
-        override fun newArray(size: Int): Array<Request?> {
+        override fun newArray(size: Int): Array<VerificationCodeData?> {
             return arrayOfNulls(size)
         }
     }

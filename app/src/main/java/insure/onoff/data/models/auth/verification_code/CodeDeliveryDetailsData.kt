@@ -2,38 +2,34 @@
  * @copyright ©2019 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
  *            Any dissemination outside of Onoff Insurance is strictly prohibited.
  */
-package insure.onoff.data.models.sample
+package insure.onoff.data.models.auth.verification_code
 
 import android.os.Parcel
 import android.os.Parcelable
 
 /**
- * Response
+ * CodeDeliveryDetailsData
  *
- * This class is responsible to be response model
- *
- * Note : This class is temporary to understand Jetpack architecture as simple as possible
+ * This class is responsible to be verification code details data
  *
  * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
 
-data class Response(val name: String?, val job: String?, val id: Int?, val createdAt: String?) : Parcelable {
+data class CodeDeliveryDetailsData(val AttributeName: String, val DeliveryMedium: String, val Destination: String) : Parcelable {
 
     //Create model with Parcel.
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
-        parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString()
     ) {
     }
 
     //To write to parcel. This is from Parcelable interface
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
-        parcel.writeString(job)
-        parcel.writeValue(id)
-        parcel.writeString(createdAt)
+        parcel.writeString(AttributeName)
+        parcel.writeString(DeliveryMedium)
+        parcel.writeString(Destination)
     }
 
     //A bitmask indicating the set of special object types marshaled by this Parcelable object instance.
@@ -42,16 +38,15 @@ data class Response(val name: String?, val job: String?, val id: Int?, val creat
         return 0
     }
 
-    //To create from Parcel. This is from Parcelable interface
-    companion object CREATOR : Parcelable.Creator<Response> {
-
+    //To create parcelable object. This is from Parcelable interface
+    companion object CREATOR : Parcelable.Creator<CodeDeliveryDetailsData> {
         //To create from Parcel
-        override fun createFromParcel(parcel: Parcel): Response {
-            return Response(parcel)
+        override fun createFromParcel(parcel: Parcel): CodeDeliveryDetailsData {
+            return CodeDeliveryDetailsData(parcel)
         }
 
         //Add new array
-        override fun newArray(size: Int): Array<Response?> {
+        override fun newArray(size: Int): Array<CodeDeliveryDetailsData?> {
             return arrayOfNulls(size)
         }
     }

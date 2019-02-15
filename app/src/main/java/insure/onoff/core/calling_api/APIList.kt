@@ -4,6 +4,9 @@
  */
 package insure.onoff.core.calling_api
 
+import insure.onoff.data.models.auth.AuthRequest
+import insure.onoff.data.models.auth.AuthResponse
+import insure.onoff.data.models.auth.verification_code.VerificationCodeResponse
 import insure.onoff.data.models.sample.Request
 import insure.onoff.data.models.sample.Response
 import retrofit2.Call
@@ -24,4 +27,15 @@ interface APIList {
     @POST("api/users")
     fun displaySomeResponse(@Body request: Request): Call<Response>
 
+    @POST("v/1/register")
+    fun register(@Body authRequest: AuthRequest): Call<AuthResponse>
+
+    @POST("v/1/register/resend-confirmation")
+    fun resendConfirmation(@Body authRequest: AuthRequest): Call<VerificationCodeResponse>
+
+    @POST("v/1/register/confirm")
+    fun confirmOTP(@Body authRequest: AuthRequest): Call<VerificationCodeResponse>
+
+    @POST("v/1/login")
+    fun login(@Body authRequest: AuthRequest): Call<AuthResponse>
 }
