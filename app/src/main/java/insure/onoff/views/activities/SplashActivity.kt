@@ -23,7 +23,6 @@ import kotlinx.android.synthetic.main.activity_splash.*
  *
  * @author    Charles S  <charlessetiadi@onoff.insure>
  */
-
 class SplashActivity : AppCompatActivity() {
     private var mDelayHandler: Handler? = null
 
