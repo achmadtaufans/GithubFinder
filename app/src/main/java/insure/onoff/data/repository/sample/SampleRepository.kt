@@ -32,7 +32,7 @@ class SampleRepository() {
     fun register(request: Request): LiveData<Response> {
         val authResponse: MutableLiveData<Response> = MutableLiveData()
 
-        TODO("Resolve Connection test problem - 6Q1YdXKs")
+        //TODO("Resolve Connection test problem - 6Q1YdXKs")
         //if(ConnectivityReceiver.isConnected) {
         apiList.displaySomeResponse(request).enqueue(object : Callback<Response> {
             override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
