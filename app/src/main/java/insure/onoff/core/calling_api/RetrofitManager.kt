@@ -4,7 +4,7 @@
  */
 package insure.onoff.core.calling_api
 
-import insure.onoff.utilities.BASE_URL
+import insure.onoff.utilities.ONOFF_API
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -37,7 +37,7 @@ object RetrofitManager {
             .client(okHttpClient)
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
+            .baseUrl(ONOFF_API)
             .build()
     }
 }
