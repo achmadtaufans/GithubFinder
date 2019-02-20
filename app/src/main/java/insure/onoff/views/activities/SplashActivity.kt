@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
     internal val mRunnable: Runnable = Runnable {
         // Delay process finish by handler
         if (!isFinishing) {
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            val intent = Intent(applicationContext, LoRegActivity::class.java)
             startActivity(intent)
             finish()
         }
