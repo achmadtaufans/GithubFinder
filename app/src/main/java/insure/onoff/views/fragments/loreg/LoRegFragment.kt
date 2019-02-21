@@ -57,7 +57,7 @@ class LoRegFragment : Fragment() {
         val adapter: PagerAdapter = IllustrationAdapter(context!!, imageUrls)
         viewPager.adapter = adapter
 
-        // set slider indicator from illisstration viewpager
+        // set slider indicator from illustration viewpager
         tabLayout2.setupWithViewPager(viewPager, true)
 
         // set auto slide illustration

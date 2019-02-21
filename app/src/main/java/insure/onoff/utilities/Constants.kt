@@ -14,7 +14,7 @@
 package insure.onoff.utilities
 
 const val ANIMATION_DURATION: Long = 1000 //Timer for splash
-const val SLIDER_DURATION: Long = 3000 //Timer for slider
+const val SLIDER_DURATION: Long =1000 //delay time first run slider
 const val SLIDER_PERIOD: Long = 3000 //Period for slider
 const val ONOFF_CDN = "https://assets.onoff.insure/" //URL for onoff CDN
 const val CDN_LOREG = "loreg/" //Path for loreg Illustration
