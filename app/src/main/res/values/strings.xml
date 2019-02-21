@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">onoff-frey-main</string>
-    <string name="image_view_desc">Display image</string>
+    <string name="app_name" translatable="false">onoff-frey-main</string>
+    <string name="image_view_desc" translatable="false">Display image</string>
     <string name="login">Login</string>
     <string name="dont_have_account">Don\'t have an account ?</string>
     <string name="register">Register</string>
     <string name="term_policy_word">By logging in or registering, therefore you agree to</string>
     <string name="we_have_sent_you_word">We’ve sent you a temporary passcode!</string>
-    <string name="please_use_passcode_word">Please use the passcode that was sent via SMS to 08*******123</string>
+    <string name="please_use_passcode_word">Please use the passcode that was sent via SMS to</string>
     <string name="verify">verify</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="next">Next</string>
@@ -17,12 +17,12 @@
     <string name="term_policy_word_2">the terms of the Onoff Insurance </string>
     <string name="havent_received_the_code">Haven\'t received the code?</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="or_register_with">or register with</string>
     <string name="resend">Resend</string>
     <string name="code_or">code or</string>
     <string name="another_verification">use another verification method</string>
-    <string name="english">EN</string>
-    <string name="indonesia">INA</string>
+    <string name="english" translatable="false">EN</string>
+    <string name="indonesia" translatable="false">INA</string>
 
 </resources>
