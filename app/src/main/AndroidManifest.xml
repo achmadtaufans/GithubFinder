@@ -23,7 +23,7 @@
                 android:name="preloaded_fonts"
                 android:resource="@array/preloaded_fonts"/>
 
-        <activity android:name=".views.activities.LoRegActivity" />
+        <activity android:name=".views.activities.LoregActivity" />
 
         <activity
                 android:name=".views.activities.SplashActivity"

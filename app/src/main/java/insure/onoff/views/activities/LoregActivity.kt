@@ -5,11 +5,11 @@
 package insure.onoff.views.activities
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import insure.onoff.R
-import android.view.MenuItem
 import insure.onoff.core.events.ShowToolbarEvent
 import insure.onoff.core.events.UpdateToolbarNameEvent
 import org.greenrobot.eventbus.EventBus
@@ -22,9 +22,9 @@ import org.greenrobot.eventbus.Subscribe
  *
  * @author    Charles S  <charlessetiadi@onoff.insure>
  */
-class LoRegActivity : AppCompatActivity() {
-    private val TAG = LoRegActivity::class.java.getName()
-    private lateinit var toolbar: Toolbar;
+class LoregActivity : AppCompatActivity() {
+    private val TAG = LoregActivity::class.java.getName()
+    private lateinit var toolbar: Toolbar
 
     /**
      * To display LoReg Activity layout and initialize toolbar.
@@ -36,8 +36,8 @@ class LoRegActivity : AppCompatActivity() {
         setContentView(R.layout.activity_loreg)
         toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        supportActionBar?.setDisplayShowHomeEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         toolbar.visibility = View.GONE
         EventBus.getDefault().register(this)
     }
@@ -48,7 +48,7 @@ class LoRegActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-                onBackPressed();
+                onBackPressed()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -71,7 +71,7 @@ class LoRegActivity : AppCompatActivity() {
     /**
      * Unregister subscriber (this activity is subscriber)
      */
-    protected override fun onDestroy() {
+    override fun onDestroy() {
         super.onDestroy()
         try {
             EventBus.getDefault().unregister(this)
@@ -93,9 +93,13 @@ class LoRegActivity : AppCompatActivity() {
      */
     @Subscribe
     fun showToolbar(showToolbarEvent: ShowToolbarEvent) {
-        when(showToolbarEvent.isShow) {
-            true -> { toolbar.visibility = View.VISIBLE }
-            false -> { toolbar.visibility = View.GONE }
+        when (showToolbarEvent.isShow) {
+            true -> {
+                toolbar.visibility = View.VISIBLE
+            }
+            false -> {
+                toolbar.visibility = View.GONE
+            }
         }
     }
 }

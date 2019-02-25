@@ -4,13 +4,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/navigation"
-        app:startDestination="@id/introFragment">
+        app:startDestination="@id/loregFragment">
 
     <fragment
-            android:id="@+id/introFragment"
-            android:name="insure.onoff.views.fragments.intro.IntroFragment"
-            android:label="Intro Fragment"
-            tools:layout="@layout/fragment_intro" >
+            android:id="@+id/loregFragment"
+            android:name="insure.onoff.views.fragments.loreg.LoregFragment"
+            android:label="Loreg Fragment"
+            tools:layout="@layout/fragment_loreg" >
 
         <action
                 android:id="@+id/actionRegisterOptionsFragment"
