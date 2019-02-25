@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#333366</color>
-    <color name="colorPrimaryDark">#040D3B</color>
-    <color name="colorPrimaryLight">#605C94</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
     <color name="colorSecondary">#FF9900</color>
     <color name="colorSecondaryDark">#C66A00</color>
     <color name="colorSecondaryLight">#FFCA47</color>
-    <color name="textColorFirst">#000000</color>
-    <color name="textColorSecond">#9E9E9E</color>
     <color name="colorGrey">#E0E0E0</color>
     <color name="colorGreyDark">#9E9E9E</color>
     <color name="colorGreyLight">#F5F5F5</color>
@@ -15,6 +13,9 @@
     <color name="colorwhite">#FFFFFF</color>
     <color name="colorRed">#F44336</color>
     <color name="colorGreen">#00B54B</color>
+    <color name="textColorFirst">#000000</color>
+    <color name="textColorSecond">#9E9E9E</color>
+
     <!-- Color Palette. Reference : https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
     <color name="gray_100">#F5F5F5</color>
     <color name="gray_400">#BDBDBD</color>

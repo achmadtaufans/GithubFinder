@@ -21,6 +21,7 @@ class OnOffApplication : Application() {
     //To initialize needed variable in whole activities
     override fun onCreate() {
         super.onCreate()
+        context = applicationContext
     }
 
     //To get Application Context from single object. So all classes can get application context

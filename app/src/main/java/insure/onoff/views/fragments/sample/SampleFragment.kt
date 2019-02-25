@@ -31,20 +31,28 @@ class SampleFragment : Fragment() {
     private lateinit var viewModel: SampleViewModel
     private lateinit var binding: FragmentSampleBinding
 
-    //To display fragment and configurate needed variables
+    /*
+     * To display fragment and configure needed variables
+     */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSampleBinding.inflate(inflater, container, false)
-        val context = context ?: return binding.root
 
-        val factory = InjectorUtils.provideSampleViewModelFactory(context);
+        val context = context ?: return binding.root
+        val factory = InjectorUtils.provideSampleViewModelFactory(context)
+
         viewModel = ViewModelProviders.of(this, factory).get(SampleViewModel::class.java)
+
         displayAccountDetail()
-        return binding.root;
+
+        return binding.root
     }
 
-    //To call sample API by calling view model
+    /*
+     * To call sample API by calling view model
+     */
     private fun displayAccountDetail() {
         val request: Request = Request("morpheus", "leader")
+
         viewModel.register(request).observe(viewLifecycleOwner, Observer { responseData ->
             if (responseData != null) {
                 binding.userDetail = responseData
