@@ -12,7 +12,7 @@ import androidx.viewpager.widget.PagerAdapter
 import com.squareup.picasso.Picasso
 import insure.onoff.R
 import insure.onoff.utilities.CDN_LOREG
-import insure.onoff.utilities.ONOFF_CDN
+import insure.onoff.utilities.ONOFF_CDN_URL
 
 /**
  * IllustrationAdapter
@@ -42,7 +42,7 @@ class IllustrationAdapter(private var context: Context, private var imageUrls: A
      */
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(context)
-        val cdnUrl = ONOFF_CDN + CDN_LOREG + imageUrls[position]
+        val cdnUrl = ONOFF_CDN_URL + CDN_LOREG + imageUrls[position]
 
         Picasso.get()
             .load(cdnUrl)

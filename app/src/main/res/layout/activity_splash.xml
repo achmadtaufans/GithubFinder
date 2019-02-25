@@ -16,16 +16,24 @@
     <ImageView
             android:layout_width="136dp"
             android:layout_height="124dp" app:srcCompat="@drawable/ic_logo_picture"
-            android:id="@+id/imageViewLogoPictureSplash"
+            android:id="@+id/ivLogoPictureSplash"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageViewLogoTextSplash" app:layout_constraintStart_toStartOf="@+id/imageViewLogoTextSplash"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewLogoTextSplash" android:contentDescription="@string/image_view_desc"/>
+            app:layout_constraintBottom_toTopOf="@+id/ivLogoTextSplash"
+            app:layout_constraintStart_toStartOf="@+id/ivLogoTextSplash"
+            app:layout_constraintEnd_toEndOf="@+id/ivLogoTextSplash"
+            android:contentDescription="@string/image_view_desc"/>
+
     <ImageView
             android:layout_width="152dp"
-            android:layout_height="51dp" app:srcCompat="@drawable/ic_logo_text"
-            android:id="@+id/imageViewLogoTextSplash"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="51dp"
+            app:srcCompat="@drawable/ic_logo_text"
+            android:id="@+id/ivLogoTextSplash"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.498" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" android:contentDescription="@string/image_view_desc"/>
+            app:layout_constraintHorizontal_bias="0.498"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/image_view_desc"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
