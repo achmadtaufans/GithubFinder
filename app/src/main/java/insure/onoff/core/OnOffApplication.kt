@@ -12,24 +12,24 @@ import android.content.Context
  *
  * This class is responsible to manage Android Application. Android Application is called first time before activity called.
  * Application can contain Application Context provider, Dagger app component provider.
+ *
  * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
 class OnOffApplication : Application() {
 
-    private lateinit var context: Context
-
     //To initialize needed variable in whole activities
     override fun onCreate() {
         super.onCreate()
+
+        instance = this
     }
 
     //To get Application Context from single object. So all classes can get application context
     companion object {
-        fun getContext() : Context = this.getContext()
-    }
+        lateinit var instance: OnOffApplication
 
-    //To get Application context
-    fun getContext(): Context {
-        return context
+        fun getContext(): Context? {
+            return instance.applicationContext
+        }
     }
 }

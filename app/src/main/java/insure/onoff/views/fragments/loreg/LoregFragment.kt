@@ -1,4 +1,4 @@
-/*
+/**
  * @copyright ©2019 Onoff Insurance All rights reserved. Trade Secret, Confidential and Proprietary.
  *            Any dissemination outside of Onoff Insurance is strictly prohibited.
  */
@@ -10,26 +10,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.viewpager.widget.PagerAdapter
+import insure.onoff.R
 import insure.onoff.adapter.IllustrationAdapter
-import insure.onoff.databinding.FragmentLoRegBinding
+import insure.onoff.core.events.ShowToolbarEvent
+import insure.onoff.databinding.FragmentLoregBinding
 import insure.onoff.utilities.SLIDER_DURATION
 import insure.onoff.utilities.SLIDER_PERIOD
-import kotlinx.android.synthetic.main.fragment_lo_reg.*
+import kotlinx.android.synthetic.main.fragment_loreg.*
+import org.greenrobot.eventbus.EventBus
 import java.util.*
 
 /**
- * LoRegFragment
+ * LoregFragment
  *
- * This class responsible to create page for loreg first view
+ * This class function is responsible to display loreg introduction after splash screen finished
  *
- * @author    Charles S  <charlessetiadi@onoff.insure>
+ * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
-class LoRegFragment : Fragment() {
-    // Generate binding class from layout
-    private lateinit var binding: FragmentLoRegBinding
+class LoregFragment : Fragment() {
+    private lateinit var binding: FragmentLoregBinding
 
-    // List of CDN data
+    /*
+     * list of CDN data
+     */
     private val imageUrls = arrayOf(
         "il-en-lowcost.png",
         "il-en-easyclaim.png",
@@ -40,13 +45,33 @@ class LoRegFragment : Fragment() {
     private var currentPage = 0
     private var numPages = 0
 
-    /**
-     *  Create view by inflating layout using navigation via binding
+    /*
+     * To display fragment and configurate needed variables
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentLoRegBinding.inflate(inflater, container, false)
-        val context = context ?: return binding.root
+        binding = FragmentLoregBinding.inflate(inflater, container, false)
+        binding.tvRegister.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.actionRegisterOptionsFragment)
+        }
+        binding.btnLogin.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.actionLoginOptionsFragment)
+        }
+
+        EventBus.getDefault().post(ShowToolbarEvent(false))
+
+        displayIllustrationsViewPager()
+
         return binding.root
+    }
+
+    /**
+     *  To display illustrations on view pager
+     */
+    private fun displayIllustrationsViewPager() {
+        val adapter: PagerAdapter = IllustrationAdapter(context!!, imageUrls)
+
+        binding.vpLoregIntro.adapter = adapter
+        binding.tlIntro.setupWithViewPager(binding.vpLoregIntro, true)
     }
 
     /**
@@ -55,10 +80,10 @@ class LoRegFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val adapter: PagerAdapter = IllustrationAdapter(context!!, imageUrls)
-        viewPager.adapter = adapter
+        vpLoregIntro.adapter = adapter
 
         // set slider indicator from illustration viewpager
-        tabLayout2.setupWithViewPager(viewPager, true)
+        tlIntro.setupWithViewPager(vpLoregIntro, true)
 
         // set auto slide illustration
         numPages = imageUrls.size
@@ -67,7 +92,7 @@ class LoRegFragment : Fragment() {
             if (currentPage == numPages) {
                 currentPage = 0
             }
-            viewPager.setCurrentItem(currentPage++, true)
+            vpLoregIntro.setCurrentItem(currentPage++, true)
         }
 
         // set timer for auto slide illustration

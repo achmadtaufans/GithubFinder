@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/default_layout_margin">
+
+        <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switchLanguages"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:textOn="@string/indonesia"
+                android:textOff="@string/english"
+                android:thumb="@drawable/shape_rounded_rectangle_switch"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:showText="true" app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpLoregIntro"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switchLanguages"
+                android:layout_marginTop="8dp" app:layout_constraintBottom_toTopOf="@+id/tlIntro"
+                app:layout_constraintVertical_bias="0.0" android:layout_marginBottom="40dp"/>
+
+        <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:id="@+id/tlIntro"
+                app:tabGravity="center"
+                app:tabBackground="@drawable/selector_dot"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="24dp"
+                app:tabIndicatorHeight="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnLogin"/>
+
+        <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:background="@drawable/shape_rounded_rectangle_yellow"
+                android:fontFamily="@font/roboto_condensed_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvHaveAccountWord"/>
+
+        <TextView
+                android:text="@string/dont_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHaveAccountWord"
+                android:textColor="@color/textColorSecond"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toStartOf="@+id/tvRegister"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:layout_marginStart="8dp" android:layout_marginEnd="4dp" android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvTermPolicyWord"/>
+
+        <TextView
+                android:text="@string/register"
+                android:textColor="@color/colorSecondary"
+                android:textSize="@dimen/text_size_small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRegister"
+                app:layout_constraintStart_toEndOf="@+id/tvHaveAccountWord"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvHaveAccountWord"
+                android:fontFamily="@font/roboto_condensed_regular" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" tools:layout_editor_absoluteY="64dp"/>
+
+        <TextView
+                android:text="@string/term_policy_word"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/textColorFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:id="@+id/tvTermPolicyWord"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvTermPolicyWord2"
+        />
+
+        <TextView
+                android:text="@string/term_policy_word_2"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/textColorFirst"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTermPolicyWord2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvTermServiceWord"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:text="@string/terms_of_service"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/colorSecondary"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTermServiceWord"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvTermPolicyWord2"
+                app:layout_constraintStart_toEndOf="@+id/tvTermPolicyWord2"
+                app:layout_constraintEnd_toStartOf="@+id/tvAnd"
+                android:layout_marginStart="4dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvAnd"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/textColorFirst"
+                android:fontFamily="@font/roboto_condensed_regular"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvTermPolicyWord2"
+                app:layout_constraintStart_toEndOf="@+id/tvTermServiceWord"
+                android:text="@string/and"
+                app:layout_constraintEnd_toStartOf="@+id/tvPrivacyPolicy" android:layout_marginStart="5dp"/>
+
+        <TextView
+                android:text="@string/privacy_policy"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/colorSecondary"
+                android:fontFamily="@font/roboto_condensed_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvTermPolicyWord2"
+                android:id="@+id/tvPrivacyPolicy" app:layout_constraintStart_toEndOf="@+id/tvAnd"
+                android:layout_marginStart="4dp"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
