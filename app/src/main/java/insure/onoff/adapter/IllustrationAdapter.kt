@@ -11,23 +11,26 @@ import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.squareup.picasso.Picasso
 import insure.onoff.R
-import insure.onoff.utilities.CDN_LOREG
 import insure.onoff.utilities.ONOFF_CDN_URL
 
 /**
  * IllustrationAdapter
  *
- * This class responsible to create page for loreg illustration
+ * This class responsible to create each view frame for slider from onoff CDN
  *
  * @author    Charles S  <charlessetiadi@onoff.insure>
  */
-class IllustrationAdapter(private var context: Context, private var imageUrls: Array<String>) : PagerAdapter() {
+class IllustrationAdapter(
+    private var context: Context,
+    private var imageFileName: Array<String>,
+    private var directoryPath: String
+) : PagerAdapter() {
 
     /**
      * get size of url array
      */
     override fun getCount(): Int {
-        return imageUrls.size
+        return imageFileName.size
     }
 
     /**
@@ -38,11 +41,12 @@ class IllustrationAdapter(private var context: Context, private var imageUrls: A
     }
 
     /**
-     * load image
+     * load image from CDN onoff insure asset and place image to it's page
      */
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(context)
-        val cdnUrl = ONOFF_CDN_URL + CDN_LOREG + imageUrls[position]
+
+        val cdnUrl = ONOFF_CDN_URL + directoryPath + imageFileName[position]
 
         Picasso.get()
             .load(cdnUrl)

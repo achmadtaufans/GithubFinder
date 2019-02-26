@@ -17,9 +17,10 @@
                 android:layout_marginEnd="8dp"
                 android:textOn="@string/indonesia"
                 android:textOff="@string/english"
-                android:thumb="@drawable/shape_rounded_rectangle_switch"
-                app:layout_constraintVertical_chainStyle="packed"
-                android:showText="true" app:layout_constraintTop_toTopOf="parent"/>
+                android:trackTint="@color/colorGreyDark"
+                android:thumb="@drawable/shape_rounded_rectangle_switch" android:showText="true"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+        />
 
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpLoregIntro"
