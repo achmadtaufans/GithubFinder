@@ -15,6 +15,7 @@
     <color name="colorGreen">#00B54B</color>
     <color name="textColorFirst">#000000</color>
     <color name="textColorSecond">#9E9E9E</color>
+    <color name="colorBlueDark">#333366</color>
 
     <!-- Color Palette. Reference : https://material.io/design/color/the-color-system.html#tools-for-picking-colors -->
     <color name="gray_100">#F5F5F5</color>

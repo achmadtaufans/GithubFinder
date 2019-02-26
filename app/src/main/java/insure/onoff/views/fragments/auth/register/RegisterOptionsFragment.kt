@@ -15,7 +15,11 @@ import insure.onoff.core.events.ShowToolbarEvent
 import insure.onoff.core.events.UpdateToolbarNameEvent
 import insure.onoff.databinding.FragmentRegisterOptionsBinding
 import android.widget.EditText
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import insure.onoff.common.validation.FormFieldEmptyValidator
+import insure.onoff.utilities.InjectorUtils
+import insure.onoff.viewmodels.AuthViewModel
 import org.greenrobot.eventbus.EventBus
 
 
@@ -28,6 +32,7 @@ import org.greenrobot.eventbus.EventBus
  */
 class RegisterOptionsFragment : Fragment() {
     private lateinit var binding: FragmentRegisterOptionsBinding;
+    private lateinit var viewModel: AuthViewModel;
 
     /*
      * To display fragment and configurate needed variables
@@ -52,8 +57,26 @@ class RegisterOptionsFragment : Fragment() {
             view.findNavController().navigate(R.id.actionRegisterEmailFirstFragment)
         }
 
+        val factory = InjectorUtils.provideAuthViewModelFactory(context!!)
+        viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java);
+
         binding.btnRegisterPhone.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.actionRegisterVerificationCode)
+            val phoneNumber : String = "+62" + binding.etMobileNumber.text.toString();
+            viewModel.checkExistedPhoneNumber(phoneNumber, "customer").observe(viewLifecycleOwner,
+                Observer {
+                    responseData ->
+                        if (responseData != null) {
+//                            if(responseData.status == true) {
+//                                val direction = RegisterOptionsFragmentDirections.actionRegisterVerificationCode(phoneNumber)
+//                                view.findNavController().navigate(direction);
+//                            } else {
+//                                binding.tvErrorMessage.visibility = View.VISIBLE;
+//                            }
+                            val direction = RegisterOptionsFragmentDirections.actionRegisterVerificationCode(phoneNumber)
+                            view.findNavController().navigate(direction);
+                        }
+                }
+            )
         }
 
         return binding.root

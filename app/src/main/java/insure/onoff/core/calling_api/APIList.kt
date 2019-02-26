@@ -6,6 +6,7 @@ package insure.onoff.core.calling_api
 
 import insure.onoff.data.models.auth.AuthRequest
 import insure.onoff.data.models.auth.AuthResponse
+import insure.onoff.data.models.auth.check_phone_number.PhoneNumberCheckResponse
 import insure.onoff.data.models.auth.verification_code.VerificationCodeResponse
 import insure.onoff.data.models.sample.Request
 import insure.onoff.data.models.sample.Response
@@ -34,8 +35,12 @@ interface APIList {
     fun resendConfirmation(@Body authRequest: AuthRequest): Call<VerificationCodeResponse>
 
     @POST("v/1/register/confirm")
-    fun confirmOTP(@Body authRequest: AuthRequest): Call<VerificationCodeResponse>
+    fun confirmRegisterOTP(@Body authRequest: AuthRequest): Call<VerificationCodeResponse>
 
     @POST("v/1/login")
     fun login(@Body authRequest: AuthRequest): Call<AuthResponse>
+
+    @POST("/v/1/check-user")
+    fun checkExistedPhoneNumber(@Body authRequest: AuthRequest): Call<PhoneNumberCheckResponse>
+
 }

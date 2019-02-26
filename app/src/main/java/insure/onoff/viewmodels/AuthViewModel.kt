@@ -9,21 +9,22 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import insure.onoff.data.models.auth.AuthResponse
 import insure.onoff.data.models.auth.AuthRequest
+import insure.onoff.data.models.auth.check_phone_number.PhoneNumberCheckResponse
 import insure.onoff.data.models.auth.verification_code.VerificationCodeResponse
 import insure.onoff.data.repository.AuthRepository
 
 /**
  * AuthViewModel
  *
- * This class is responsible to be profile ViewModel. This ViewModel manages UI-related data related with authentication
+ * This class is responsible to be auth ViewModel. This ViewModel manages UI-related data related with authentication
  *
  * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
  */
-
 class AuthViewModel constructor(private val repository: AuthRepository) : ViewModel() {
 
     private val authResponse = MediatorLiveData<AuthResponse>();
     private val verificationCodeResponse = MediatorLiveData<VerificationCodeResponse>();
+    private val phoneNumberCheckResponse = MediatorLiveData<PhoneNumberCheckResponse>();
 
     //To call register by email on repository and getting Live Data
     fun registerByEmail(username: String, password: String, userType: String, deviceId: String) : MediatorLiveData<AuthResponse> {
@@ -66,5 +67,12 @@ class AuthViewModel constructor(private val repository: AuthRepository) : ViewMo
         val liveData : LiveData<AuthResponse> = repository.login(authRequest);
         authResponse.addSource(liveData, authResponse::setValue)
         return authResponse;
+    }
+
+    fun checkExistedPhoneNumber(username: String, userType: String) : MediatorLiveData<PhoneNumberCheckResponse> {
+        val authRequest: AuthRequest = AuthRequest(username, userType)
+        val liveData : LiveData<PhoneNumberCheckResponse> = repository.checkPhoneNumber(authRequest);
+        phoneNumberCheckResponse.addSource(liveData, phoneNumberCheckResponse::setValue)
+        return phoneNumberCheckResponse;
     }
 }

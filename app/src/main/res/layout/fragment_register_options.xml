@@ -19,7 +19,7 @@
 
         <EditText
                 android:layout_width="0dp"
-                android:layout_height="42dp"
+                android:layout_height="40dp"
                 android:inputType="number"
                 android:maxLength="14"
                 android:ems="10"
@@ -31,6 +31,20 @@
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/gray_400"
                 app:layout_constraintTop_toBottomOf="@+id/tvMobileNumberWord"/>
+
+        <TextView
+                android:text="Phone number is exist"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvErrorMessage"
+                android:textColor="@color/colorRed"
+                android:fontFamily="@font/roboto_condensed_regular"
+                app:layout_constraintTop_toBottomOf="@+id/etMobileNumber"
+                app:layout_constraintStart_toEndOf="@+id/btnCountryCode"
+                android:layout_marginStart="16dp"
+                android:visibility="gone"/>
 
         <Button
                 android:id="@+id/btnCountryCode"
