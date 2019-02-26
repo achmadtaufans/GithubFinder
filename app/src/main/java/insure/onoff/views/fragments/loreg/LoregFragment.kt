@@ -99,7 +99,10 @@ class LoregFragment : Fragment() {
     private fun runSlider() {
         val adapter: PagerAdapter = IllustrationAdapter(context!!, imageFileName!!, CDN_LOREG)
 
+        // Set content into viewpager(vp)
         binding.vpLoregIntro.adapter = adapter
+
+        // create tablayout(tl) for make dot indicator below the viewpager
         binding.tlIntro.setupWithViewPager(binding.vpLoregIntro, true)
 
         // Change page every trigger by timer
@@ -116,12 +119,10 @@ class LoregFragment : Fragment() {
      *  switch locale string to change language (restart)
      */
     private fun setLocale(lang: String) {
-        val myLocale = Locale(lang)
         val res = resources
-        val dm = res.displayMetrics
         val conf = res.configuration
-        conf.setLocale(myLocale)
-        res.updateConfiguration(conf, dm)
+        conf.setLocale(Locale(lang))
+        res.updateConfiguration(conf, res.displayMetrics)
         val refresh = Intent(activity, LoregActivity::class.java)
         startActivity(refresh)
         activity!!.finish()
