@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Masuk</string>
+    <string name="dont_have_account">Belum memiliki akun ?</string>
+    <string name="register">Daftar</string>
+    <string name="term_policy_word">Dengan masuk atau mendaftar, anda menyatakan setuju kepada</string>
+    <string name="we_have_sent_you_word">Kami telah mengirimkan anda kode unik sementara</string>
+    <string name="please_use_passcode_word">Harap gunakan kode unik yang telah dikirimkan melalui SMS pada</string>
+    <string name="verify">Verifikasi</string>
+    <string name="mobile_number">Nomor Ponsel</string>
+    <string name="next">Lanjut</string>
+    <string name="or_login_with">atau masuk dengan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="and">dan</string>
+    <string name="terms_of_service">Syarat dan Ketentuan</string>
+    <string name="term_policy_word_2">ketentuan dari Onoff Insurance</string>
+    <string name="havent_received_the_code">Belum menerima kode</string>
+    <string name="or_register_with">atau daftar dengan</string>
+    <string name="resend">Kirim ulang</string>
+    <string name="code_or">kode atau</string>
+    <string name="another_verification">menggunakan metode verifikasi lain</string>
+
+    <string-array name="cdn">
+        <item>il-id-lowcost.png</item>
+        <item>il-id-easyclaim.png</item>
+        <item>il-id-hourlyprotection.png</item>
+    </string-array>
+</resources>

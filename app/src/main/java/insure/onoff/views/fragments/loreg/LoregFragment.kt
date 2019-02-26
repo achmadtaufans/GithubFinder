@@ -4,6 +4,7 @@
  */
 package insure.onoff.views.fragments.loreg
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -16,8 +17,10 @@ import insure.onoff.R
 import insure.onoff.adapter.IllustrationAdapter
 import insure.onoff.core.events.ShowToolbarEvent
 import insure.onoff.databinding.FragmentLoregBinding
+import insure.onoff.utilities.CDN_LOREG
 import insure.onoff.utilities.SLIDER_DURATION
-import insure.onoff.utilities.SLIDER_PERIOD
+import insure.onoff.utilities.SLIDER_START_DELAY
+import insure.onoff.views.activities.LoregActivity
 import kotlinx.android.synthetic.main.fragment_loreg.*
 import org.greenrobot.eventbus.EventBus
 import java.util.*
@@ -25,28 +28,29 @@ import java.util.*
 /**
  * LoregFragment
  *
- * This class function is responsible to display loreg introduction after splash screen finished
+ * This class responsible to create page for loreg first view
  *
- * @author    Andika Kurniawan  <andikakurniawan@onoff.insure>
+ * @author    Charles S  <charlessetiadi@onoff.insure>
  */
 class LoregFragment : Fragment() {
     private lateinit var binding: FragmentLoregBinding
 
-    /*
-     * list of CDN data
-     */
-    private val imageUrls = arrayOf(
-        "il-en-lowcost.png",
-        "il-en-easyclaim.png",
-        "il-en-hourlyprotection.png"
-    )
+    // List of CDN link
+    private var imageFileName: Array<String>? = null
 
-    // Value for handle page of auto slide
-    private var currentPage = 0
-    private var numPages = 0
+    // Set first value for page of auto slide
+    private var pagePosition = 0
+    private var arraySize = 0
 
-    /*
-     * To display fragment and configurate needed variables
+    // Set Handler for change illustration page
+    private var handler = Handler()
+    private var slide: Runnable? = null
+
+    // Set timer for auto slide illustration
+    private var swipeTimer = Timer()
+
+    /**
+     *  create view by inflating layout using navigation via binding
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoregBinding.inflate(inflater, container, false)
@@ -59,19 +63,7 @@ class LoregFragment : Fragment() {
 
         EventBus.getDefault().post(ShowToolbarEvent(false))
 
-        displayIllustrationsViewPager()
-
         return binding.root
-    }
-
-    /**
-     *  To display illustrations on view pager
-     */
-    private fun displayIllustrationsViewPager() {
-        val adapter: PagerAdapter = IllustrationAdapter(context!!, imageUrls)
-
-        binding.vpLoregIntro.adapter = adapter
-        binding.tlIntro.setupWithViewPager(binding.vpLoregIntro, true)
     }
 
     /**
@@ -79,28 +71,68 @@ class LoregFragment : Fragment() {
      */
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val adapter: PagerAdapter = IllustrationAdapter(context!!, imageUrls)
-        vpLoregIntro.adapter = adapter
 
-        // set slider indicator from illustration viewpager
-        tlIntro.setupWithViewPager(vpLoregIntro, true)
+        // get CDN link from XML String
+        imageFileName = context!!.resources.getStringArray(R.array.cdn)
 
-        // set auto slide illustration
-        numPages = imageUrls.size
-        val handler = Handler()
-        val update = Runnable {
-            if (currentPage == numPages) {
-                currentPage = 0
-            }
-            vpLoregIntro.setCurrentItem(currentPage++, true)
-        }
+        // lock switch icon position
+        switchLanguages.isChecked = (Locale.getDefault().toLanguageTag().toString() == "id")
 
-        // set timer for auto slide illustration
-        val swipeTimer = Timer()
+        // Set trigger for auto slide illustration
         swipeTimer.schedule(object : TimerTask() {
             override fun run() {
-                handler.post(update)
+                handler.post(slide)
             }
-        }, SLIDER_DURATION, SLIDER_PERIOD)
+        }, SLIDER_START_DELAY, SLIDER_DURATION)
+
+        // Run illustration when first view created
+        runSlider()
+
+        switchLanguages.setOnCheckedChangeListener { buttonView, isChecked ->
+            setLocale(if (isChecked) "id" else "en")
+        }
+    }
+
+    /**
+     *  Create slider view
+     */
+    private fun runSlider() {
+        val adapter: PagerAdapter = IllustrationAdapter(context!!, imageFileName!!, CDN_LOREG)
+
+        binding.vpLoregIntro.adapter = adapter
+        binding.tlIntro.setupWithViewPager(binding.vpLoregIntro, true)
+
+        // Change page every trigger by timer
+        arraySize = imageFileName!!.size
+        slide = Runnable {
+            if (pagePosition == arraySize) {
+                pagePosition = 0
+            }
+            binding.vpLoregIntro.setCurrentItem(pagePosition++, true)
+        }
+    }
+
+    /**
+     *  switch locale string to change language (restart)
+     */
+    private fun setLocale(lang: String) {
+        val myLocale = Locale(lang)
+        val res = resources
+        val dm = res.displayMetrics
+        val conf = res.configuration
+        conf.setLocale(myLocale)
+        res.updateConfiguration(conf, dm)
+        val refresh = Intent(activity, LoregActivity::class.java)
+        startActivity(refresh)
+        activity!!.finish()
+    }
+
+    /**
+     *  To clean handler and timer when view closed
+     */
+    override fun onDestroyView() {
+        handler.removeCallbacks(slide)
+        swipeTimer.cancel()
+        super.onDestroyView()
     }
 }
