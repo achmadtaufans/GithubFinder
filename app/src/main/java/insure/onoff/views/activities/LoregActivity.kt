@@ -23,7 +23,7 @@ import org.greenrobot.eventbus.Subscribe
  * @author    Charles S  <charlessetiadi@onoff.insure>
  */
 class LoregActivity : AppCompatActivity() {
-    private val TAG = LoregActivity::class.java.getName()
+    private val TAG = LoregActivity::class.java.name
     private lateinit var toolbar: Toolbar
 
     /**
@@ -34,7 +34,7 @@ class LoregActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_loreg)
-        toolbar = findViewById(R.id.toolbar) as Toolbar
+        toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
@@ -46,7 +46,7 @@ class LoregActivity : AppCompatActivity() {
      * To make user go back when user click back arrow on top toolbar
      * */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.getItemId()) {
+        when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
                 return true
@@ -85,7 +85,7 @@ class LoregActivity : AppCompatActivity() {
      */
     @Subscribe
     fun changeToolbarName(updateToolbarNameEvent: UpdateToolbarNameEvent) {
-        supportActionBar?.setTitle(updateToolbarNameEvent.titleToolbar)
+        supportActionBar?.title = updateToolbarNameEvent.titleToolbar
     }
 
     /**
