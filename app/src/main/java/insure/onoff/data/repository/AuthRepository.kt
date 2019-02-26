@@ -14,6 +14,8 @@ import insure.onoff.data.models.auth.verification_code.VerificationCodeResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.util.Log
+import insure.onoff.data.models.auth.check_phone_number.PhoneNumberCheckResponse
 
 /**
  * AuthRepository
@@ -24,6 +26,7 @@ import retrofit2.Response
  */
 
 class AuthRepository() {
+    val TAG : String = AuthRepository::class.java.getName()
 
     val apiList : APIList = RetrofitManager.service;
 
@@ -34,10 +37,11 @@ class AuthRepository() {
         apiList.register(authRequest).enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 authResponse.value = response.body();
+                Log.e(TAG, "Go to On Response");
             }
 
             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-
+                Log.e(TAG, "Go to On Failure");
             }
         })
 
@@ -50,10 +54,11 @@ class AuthRepository() {
 
         apiList.resendConfirmation(authRequest).enqueue(object: Callback<VerificationCodeResponse> {
             override fun onResponse(call: Call<VerificationCodeResponse>, response: Response<VerificationCodeResponse>) {
-
+                Log.e(TAG, "Go to On Response");
             }
 
             override fun onFailure(call: Call<VerificationCodeResponse>, t: Throwable) {
+                Log.e(TAG, "Go to On Failure");
             }
         })
 
@@ -64,12 +69,13 @@ class AuthRepository() {
     fun confirmOTP(authRequest: AuthRequest) : LiveData<VerificationCodeResponse> {
         val verificationCodeResponse : MutableLiveData<VerificationCodeResponse> = MutableLiveData();
 
-        apiList.resendConfirmation(authRequest).enqueue(object: Callback<VerificationCodeResponse> {
+        apiList.confirmRegisterOTP(authRequest).enqueue(object: Callback<VerificationCodeResponse> {
             override fun onResponse(call: Call<VerificationCodeResponse>, response: Response<VerificationCodeResponse>) {
-
+                Log.e(TAG, "Go to On Response");
             }
 
             override fun onFailure(call: Call<VerificationCodeResponse>, t: Throwable) {
+                Log.e(TAG, "Go to On Failure");
             }
         })
 
@@ -83,13 +89,32 @@ class AuthRepository() {
         apiList.login(authRequest).enqueue(object : Callback<AuthResponse> {
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                 authResponse.value = response.body();
+                Log.e(TAG, "Go to On Response");
             }
 
             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-
+                Log.e(TAG, "Go to On Failure");
             }
         })
 
         return authResponse;
+    }
+
+    //To check phone number
+    fun checkPhoneNumber(authRequest: AuthRequest) : LiveData<PhoneNumberCheckResponse> {
+        val phoneNumberCheckResponse : MutableLiveData<PhoneNumberCheckResponse> = MutableLiveData();
+
+        apiList.checkExistedPhoneNumber(authRequest).enqueue(object: Callback<PhoneNumberCheckResponse> {
+            override fun onResponse(call: Call<PhoneNumberCheckResponse>, response: Response<PhoneNumberCheckResponse>) {
+                phoneNumberCheckResponse.value = response.body()
+                Log.e(TAG, "Go to On Response");
+            }
+
+            override fun onFailure(call: Call<PhoneNumberCheckResponse>, t: Throwable) {
+                Log.e(TAG, "Go to On Failure");
+            }
+        })
+
+        return phoneNumberCheckResponse;
     }
 }

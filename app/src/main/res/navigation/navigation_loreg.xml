@@ -19,6 +19,7 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" />
+
         <action android:id="@+id/actionLoginOptionsFragment"
                 app:destination="@id/loginOptionsFragment"
                 app:enterAnim="@anim/slide_in_right"
@@ -56,6 +57,21 @@
               android:label="Register Verification Code"
               tools:layout="@layout/fragment_register_verification_code">
 
+        <argument
+                android:name="phoneNumber"
+                app:argType="string" />
+
+        <action android:id="@+id/actionRegisterOtherVersMethodsFragment"
+                app:destination="@id/registerOtherVersMethodsFragment"/>
+
+    </fragment>
+
+    <fragment
+            android:id="@+id/registerOtherVersMethodsFragment"
+            android:name="insure.onoff.views.fragments.auth.register.RegisterOtherVerMethodsFragment"
+            android:label="Register Other Verification Methods"
+            tools:layout="@layout/fragment_register_other_ver_methods">
+
     </fragment>
 
     <fragment
@@ -83,6 +99,7 @@
                 android:name="email"
                 app:argType="string" />
     </fragment>
+
     <fragment android:id="@+id/loginOptionsFragment"
               android:name="insure.onoff.views.fragments.auth.login.LoginOptionsFragment"
               android:label="LoginOptionsFragment"

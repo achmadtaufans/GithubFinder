@@ -22,5 +22,5 @@ const val ONOFF_CDN_URL = "https://assets.onoff.insure/" //URL for onoff CDN
 const val CDN_LOREG = "loreg/" //Path for loreg Illustration
 const val DATABASE_NAME = "onoff-db"
 //const val ONOFF_API_BASE_URL = "https://reqres.in/" //For Testing
-//const val ONOFF_API_BASE_URL = "172.16.21.69:3003/"
+//const val ONOFF_API_BASE_URL = "http://172.16.21.69:3003/"
 const val ONOFF_API_BASE_URL = "http://apitest.onoff.insure:3003/"

@@ -23,8 +23,13 @@
     <string name="resend">Resend</string>
     <string name="code_or">code or</string>
     <string name="another_verification">use another verification method</string>
-    <string name="english" translatable="false">EN</string>
-    <string name="indonesia" translatable="false">INA</string>
+    <string name="english">EN</string>
+    <string name="indonesia">INA</string>
+    <string name="verification_method_title">Select a different method</string>
+    <string name="verification_method_description">Please select one of the following methods \n to receive your temporary passcode</string>
+    <string name="verification_method_menu_sms">Send SMS to mobile number</string>
+    <string name="verification_method_menu_call">Call mobile number</string>
+
 
     <string-array name="cdn">
         <item>il-en-lowcost.png</item>

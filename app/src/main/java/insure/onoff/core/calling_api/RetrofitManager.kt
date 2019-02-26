@@ -28,7 +28,6 @@ object RetrofitManager {
     //Initialize needed properties like headers, base url, etc...
     init {
         val httpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-            .setLevel(HttpLoggingInterceptor.Level.HEADERS)
 
         //Build ok http client
         val okHttpClient = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build()
