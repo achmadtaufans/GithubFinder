@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="onLayoutClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="ReminderListItem"
+            type="com.example.bluebird.data.ReminderList" />
+
+        <variable
+            name="reminderTitle"
+            type="String" />
+
+        <variable
+            name="reminderDescription"
+            type="String" />
+
+        <variable
+            name="reminderDateAndTime"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clyReminderItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{onLayoutClick}">
+
+        <TextView
+            android:id="@+id/txvReminderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:maxLines="1"
+            android:text="@{reminderTitle}"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvReminderDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:text="@{reminderDescription}"
+            app:layout_constraintEnd_toStartOf="@+id/txvReminderDateAndTime"
+            app:layout_constraintStart_toStartOf="@+id/txvReminderTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txvReminderTitle" />
+
+        <TextView
+            android:id="@+id/txvReminderDateAndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@{reminderDateAndTime}"
+            android:textColor="@android:color/holo_green_light"
+            app:layout_constraintBottom_toBottomOf="@+id/txvReminderDescription"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="2dp"
+            android:background="@android:drawable/bottom_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvReminderDescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
